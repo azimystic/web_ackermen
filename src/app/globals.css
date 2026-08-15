@@ -509,17 +509,19 @@ mark {
   height: auto;
   filter: drop-shadow(0 26px 34px rgba(23, 32, 63, 0.2));
   will-change: transform;
+  backface-visibility: hidden;
 }
 @media (prefers-reduced-motion: no-preference) {
   /* Two out-of-phase cycles so the drift never visibly repeats or snaps. */
   .heromark__img { animation: markFloat 9s ease-in-out infinite; }
 }
+/* Translation only — no rotate(). Rotating a raster mark forces the browser
+   to resample every frame, which reads as permanent softness on hard edges;
+   whole-pixel translation keeps the source crisp. */
 @keyframes markFloat {
-  0%   { transform: translate3d(0, -10px, 0) rotate(-1.1deg); }
-  25%  { transform: translate3d(4px, 2px, 0) rotate(0.4deg); }
-  50%  { transform: translate3d(0, 12px, 0) rotate(1.1deg); }
-  75%  { transform: translate3d(-4px, 2px, 0) rotate(0.4deg); }
-  100% { transform: translate3d(0, -10px, 0) rotate(-1.1deg); }
+  0%   { transform: translate3d(0, -10px, 0); }
+  50%  { transform: translate3d(0, 10px, 0); }
+  100% { transform: translate3d(0, -10px, 0); }
 }
 .heromark__caption {
   margin-top: 0.9rem;
@@ -835,6 +837,8 @@ mark {
   width: clamp(6.5rem, 14vw, 11rem);
   height: auto;
   filter: drop-shadow(0 20px 28px rgba(23, 32, 63, 0.18));
+  will-change: transform;
+  backface-visibility: hidden;
 }
 .floatmark--lg { width: clamp(8.5rem, 18vw, 14rem); }
 @media (prefers-reduced-motion: no-preference) {
