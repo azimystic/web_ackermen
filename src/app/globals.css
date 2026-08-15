@@ -507,9 +507,12 @@ mark {
 .heromark__img {
   width: clamp(11rem, 26vw, 21rem);
   height: auto;
-  filter: drop-shadow(0 26px 34px rgba(23, 32, 63, 0.2));
+  /* Smaller blur radius than a static shadow would use — cheaper to
+     composite on every animation frame, still reads as lifted. */
+  filter: drop-shadow(0 18px 20px rgba(23, 32, 63, 0.18));
   will-change: transform;
   backface-visibility: hidden;
+  transform: translateZ(0);
 }
 @media (prefers-reduced-motion: no-preference) {
   /* Two out-of-phase cycles so the drift never visibly repeats or snaps. */
