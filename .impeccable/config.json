@@ -1,0 +1,116 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-color",
+        "value": "#000",
+        "createdAt": "2026-08-15T11:28:54.301Z",
+        "reason": "not a color: alpha stencil inside mask-image/-webkit-mask-image gradients (grid-field radial mask, ruler tick mask)"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#d98708",
+        "createdAt": "2026-08-15T11:28:54.354Z",
+        "reason": "KampusShot sub-world: the Kampus product's own greige/amber palette, scoped inside device frames only — DESIGN.md documents this as the Sub-World rule"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(34, 30, 23, 0.06)",
+        "createdAt": "2026-08-15T11:28:54.409Z",
+        "reason": "KampusShot sub-world: the Kampus product's own greige/amber palette, scoped inside device frames only — DESIGN.md documents this as the Sub-World rule"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(34, 30, 23, 0.18)",
+        "createdAt": "2026-08-15T11:28:54.464Z",
+        "reason": "KampusShot sub-world: the Kampus product's own greige/amber palette, scoped inside device frames only — DESIGN.md documents this as the Sub-World rule"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 250, 240, 0.55)",
+        "createdAt": "2026-08-15T11:28:54.518Z",
+        "reason": "KampusShot sub-world: the Kampus product's own greige/amber palette, scoped inside device frames only — DESIGN.md documents this as the Sub-World rule"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(240, 164, 28, 0.2)",
+        "createdAt": "2026-08-15T11:28:54.572Z",
+        "reason": "KampusShot sub-world: the Kampus product's own greige/amber palette, scoped inside device frames only — DESIGN.md documents this as the Sub-World rule"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(76, 122, 61, 0.18)",
+        "createdAt": "2026-08-15T11:28:54.628Z",
+        "reason": "KampusShot sub-world: the Kampus product's own greige/amber palette, scoped inside device frames only — DESIGN.md documents this as the Sub-World rule"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#3a6330",
+        "createdAt": "2026-08-15T11:28:54.681Z",
+        "reason": "KampusShot sub-world: the Kampus product's own greige/amber palette, scoped inside device frames only — DESIGN.md documents this as the Sub-World rule"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#fff",
+        "createdAt": "2026-08-15T11:29:09.501Z",
+        "reason": "white/black at alpha as surface material: the --surface paper gradient, on-accent text (AA white on #2b5bff), CTA-panel inversions, and the dark band's shadow — DESIGN.md records these as material, not palette entries"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 255, 255, 0.85)",
+        "createdAt": "2026-08-15T11:29:09.552Z",
+        "reason": "white/black at alpha as surface material: the --surface paper gradient, on-accent text (AA white on #2b5bff), CTA-panel inversions, and the dark band's shadow — DESIGN.md records these as material, not palette entries"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 255, 255, 0.55)",
+        "createdAt": "2026-08-15T11:29:09.610Z",
+        "reason": "white/black at alpha as surface material: the --surface paper gradient, on-accent text (AA white on #2b5bff), CTA-panel inversions, and the dark band's shadow — DESIGN.md records these as material, not palette entries"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 255, 255, 0.5)",
+        "createdAt": "2026-08-15T11:29:09.664Z",
+        "reason": "white/black at alpha as surface material: the --surface paper gradient, on-accent text (AA white on #2b5bff), CTA-panel inversions, and the dark band's shadow — DESIGN.md records these as material, not palette entries"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 255, 255, 0.16)",
+        "createdAt": "2026-08-15T11:29:09.720Z",
+        "reason": "white/black at alpha as surface material: the --surface paper gradient, on-accent text (AA white on #2b5bff), CTA-panel inversions, and the dark band's shadow — DESIGN.md records these as material, not palette entries"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 255, 255, 0.75)",
+        "createdAt": "2026-08-15T11:29:09.775Z",
+        "reason": "white/black at alpha as surface material: the --surface paper gradient, on-accent text (AA white on #2b5bff), CTA-panel inversions, and the dark band's shadow — DESIGN.md records these as material, not palette entries"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(255, 255, 255, 0.4)",
+        "createdAt": "2026-08-15T11:29:09.830Z",
+        "reason": "white/black at alpha as surface material: the --surface paper gradient, on-accent text (AA white on #2b5bff), CTA-panel inversions, and the dark band's shadow — DESIGN.md records these as material, not palette entries"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.45)",
+        "createdAt": "2026-08-15T11:29:09.885Z",
+        "reason": "white/black at alpha as surface material: the --surface paper gradient, on-accent text (AA white on #2b5bff), CTA-panel inversions, and the dark band's shadow — DESIGN.md records these as material, not palette entries"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "7px",
+        "createdAt": "2026-08-15T11:30:23.712Z",
+        "reason": "KampusShot sub-world: Kampus's own 22px logo squircle inside the device frame — DESIGN.md Sub-World rule"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "5px",
+        "createdAt": "2026-08-15T11:30:23.771Z",
+        "reason": "KampusShot sub-world: Kampus's own 16px sidebar icon squircles inside the device frame — DESIGN.md Sub-World rule"
+      }
+    ]
+  }
+}
