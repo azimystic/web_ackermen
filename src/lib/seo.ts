@@ -67,9 +67,11 @@ export const SITE = {
     region: "England",
     country: "GB",
     countryName: "United Kingdom",
+    // No street address by choice: the business does not publish one. City +
+    // phone is a valid, honest partial NAP.
     streetAddress: "",
     postalCode: "",
-    telephone: "",
+    telephone: "+44 7737 641862",
   },
 } as const;
 

@@ -10,7 +10,7 @@ import {
 import { isLocale, localeHref, type Locale } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n";
 import { SITE } from "@/lib/seo";
-import { visibleStats } from "@/lib/stats";
+import { showStatBand, visibleStats } from "@/lib/stats";
 import { visibleTestimonials } from "@/lib/testimonials";
 import KampusMark from "../components/KampusMark";
 import Ticker from "../components/Ticker";
@@ -224,11 +224,15 @@ export default async function Home({
       </section>
 
       {/* ---- Stats ---- */}
-      <StatBand
-        eyebrow={dict.home.stats.eyebrow}
-        title={dict.home.stats.h}
-        items={stats}
-      />
+      {/* Dropped entirely rather than shown thin: in production only figures
+          marked verified survive, and one lonely number reads as a bug. */}
+      {showStatBand() && (
+        <StatBand
+          eyebrow={dict.home.stats.eyebrow}
+          title={dict.home.stats.h}
+          items={stats}
+        />
+      )}
 
       {/* ---- Process ---- */}
       <section className="section grid-field grid-field--ruled">

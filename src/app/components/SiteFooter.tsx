@@ -7,6 +7,7 @@ import {
   type Locale,
 } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n";
+import { hasPublishedArticles } from "@/lib/insights";
 import LogoMark from "./LogoMark";
 
 export default function SiteFooter({ locale }: { locale: Locale }) {
@@ -43,6 +44,14 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
                 site actually has. */}
             <address className="footer__place">
               {SITE.place.locality}, {SITE.place.countryName}
+              {SITE.place.telephone && (
+                <>
+                  <br />
+                  <a href={`tel:${SITE.place.telephone.replace(/\s+/g, "")}`}>
+                    {SITE.place.telephone}
+                  </a>
+                </>
+              )}
             </address>
           </div>
 
@@ -54,6 +63,10 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
               <li><Link href={href("/industries")}>{dict.nav.industries}</Link></li>
               <li><Link href={href("/work")}>{dict.nav.work}</Link></li>
               <li><Link href={href("/pricing")}>{dict.nav.pricing}</Link></li>
+              {/* Appears by itself once the first article is published. */}
+              {hasPublishedArticles(locale) && (
+                <li><Link href={href("/insights")}>{dict.meta.insights.title}</Link></li>
+              )}
               <li><Link href={href("/testimonials")}>{dict.nav.testimonials}</Link></li>
               <li><Link href={href("/about")}>{dict.nav.about}</Link></li>
               <li><Link href={href("/contact")}>{dict.nav.contact}</Link></li>

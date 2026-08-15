@@ -151,17 +151,17 @@ export default function Nav({
             label={labels.industries}
             overviewHref={href("/industries")}
             overviewLabel={overviewLabels.industries}
-            items={industries.items.slice(0, 4).map((i) => ({
-              label: i.name,
-              sub: i.who,
-              href: href("/industries"),
+            items={industries.items.slice(0, 4).map((item, i) => ({
+              label: item.name,
+              sub: item.who,
+              href: href(`/industries#ind-${i}`),
             }))}
             panel={{
               heading: industries.intro.eyebrow,
-              items: industries.items.slice(4).map((i) => ({
-                title: i.name,
-                desc: i.who,
-                href: href("/industries"),
+              items: industries.items.slice(4).map((item, i) => ({
+                title: item.name,
+                desc: item.who,
+                href: href(`/industries#ind-${i + 4}`),
               })),
             }}
           />

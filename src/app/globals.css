@@ -1713,6 +1713,85 @@ mark {
 }
 
 .svc-section { scroll-margin-top: 128px; }
+/* Same clearance for industry cards, now that the nav deep-links into them. */
+.ind { scroll-margin-top: 128px; }
+
+/* ---- Insights ---- */
+.posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.post {
+  border-bottom: 1px solid var(--line);
+}
+.post > a {
+  display: block;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+  text-decoration: none;
+  color: inherit;
+  transition: padding-inline-start 0.35s var(--ease-out);
+}
+.post > a:hover { padding-inline-start: 0.75rem; }
+.post__date {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft, rgba(21, 23, 28, 0.55));
+}
+.post h3 {
+  margin: 0.4rem 0 0.5rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.post p {
+  max-width: 62ch;
+  color: var(--ink-soft, rgba(21, 23, 28, 0.66));
+}
+.post__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
+.post__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+.post__back:hover { text-decoration: underline; }
+.post__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  color: var(--ink-soft, rgba(21, 23, 28, 0.55));
+}
+/* Article body: one measured column, the only place on the site with long prose. */
+.prose { max-width: 68ch; }
+.prose p {
+  margin-bottom: 1.15em;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.font-ur .prose p { line-height: 2.1; }
+.font-ar .prose p { line-height: 1.95; }
 
 .syscards {
   display: grid;
@@ -1974,8 +2053,18 @@ mark {
   font-family: var(--font-mono), monospace;
   font-size: 0.8125rem;
   font-style: normal;
+  line-height: 1.7;
   color: var(--ink-soft, rgba(21, 23, 28, 0.66));
 }
+.footer__place a {
+  color: var(--accent-deep);
+  text-decoration: none;
+  /* Phone numbers stay LTR even on the Urdu and Arabic pages. */
+  direction: ltr;
+  unicode-bidi: embed;
+  display: inline-block;
+}
+.footer__place a:hover { text-decoration: underline; }
 .footer__col h3 {
   font-family: var(--font-mono), monospace;
   font-size: 0.75rem;

@@ -47,6 +47,11 @@ const en = {
       description:
         "How we built Kampus: one system replacing five for multi-campus schools, working in English, Urdu and Arabic.",
     },
+    insights: {
+      title: "Insights",
+      description:
+        "Notes on building multilingual software: right-to-left interfaces, Arabic and Urdu typography, ERP and automation decisions, written from projects we actually ran.",
+    },
     testimonials: {
       title: "Client stories",
       description: "What it is like to work with Ackerman, in our clients' words.",
@@ -676,6 +681,18 @@ const en = {
       sub: "Kampus started as a sketch on a call. Yours can too.",
       button: "Start a project",
     },
+  },
+
+  insights: {
+    intro: {
+      eyebrow: "Insights",
+      h: { pre: "What we learned ", mark: "building it.", post: "" } as H,
+      sub: "Notes from real projects: what right-to-left actually demands, where multilingual products go wrong, and when a system is worth building at all.",
+    },
+    empty: "The first articles are being written and will appear here shortly.",
+    readMore: "Read the article",
+    back: "All insights",
+    by: "By",
   },
 
   testimonials: {

@@ -117,8 +117,11 @@ export default function MegaMenu({
                 <b>{overviewLabel}</b>
               </Link>
               <ul>
+                {/* Keyed by position, not href: these are a fixed, ordered
+                    list that never reorders, and several can legitimately
+                    share a destination. Keying on href silently collided. */}
                 {items.map((it, i) => (
-                  <li key={it.href}>
+                  <li key={i}>
                     <Link
                       href={it.href}
                       className={i === active ? "is-active" : ""}
@@ -137,10 +140,10 @@ export default function MegaMenu({
             <div className="mega__detail">
               <span className="mega__detailhead">{panel.heading}</span>
               <div className="mega__grid">
-                {panel.items.map((p) => (
+                {panel.items.map((p, i) => (
                   <Link
                     href={p.href}
-                    key={p.title}
+                    key={i}
                     onClick={() => setOpen(false)}
                   >
                     <b>{p.title}</b>

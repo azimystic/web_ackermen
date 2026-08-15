@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/seo";
 import { LOCALES, localeHref } from "@/lib/i18n/config";
 import { hasRealTestimonials } from "@/lib/testimonials";
+import { ARTICLES, hasPublishedArticles } from "@/lib/insights";
 
 const BASE_PATHS = [
   "/",
@@ -20,6 +21,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const PATHS = hasRealTestimonials()
     ? [...BASE_PATHS, "/testimonials"]
     : BASE_PATHS;
+
+  // The insights index and any written article. Unwritten outlines are not
+  // listed: submitting URLs that render an empty page wastes crawl budget and
+  // teaches Google the section is thin.
+  if (hasPublishedArticles("en")) {
+    PATHS.push("/insights");
+    for (const a of ARTICLES) {
+      if (a.published && (a.t.en?.body.length ?? 0) > 0) {
+        PATHS.push(`/insights/${a.slug}`);
+      }
+    }
+  }
 
   return PATHS.flatMap((path) =>
     LOCALES.map((locale) => ({

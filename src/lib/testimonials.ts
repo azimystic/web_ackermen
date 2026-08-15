@@ -1,5 +1,6 @@
 import type { Locale } from "./i18n/config";
 import type { Quote } from "./i18n/dictionaries/en";
+import { showPlaceholders } from "./placeholders";
 
 /**
  * Client testimonials.
@@ -165,8 +166,14 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
+/**
+ * Quotes safe to show. A testimonial counts as real once `permission` records
+ * who approved it and when; until then it is demo copy and is hidden in
+ * production. See [[placeholders]].
+ */
 export function visibleTestimonials(): Testimonial[] {
-  return TESTIMONIALS;
+  if (showPlaceholders()) return TESTIMONIALS;
+  return TESTIMONIALS.filter((t) => !!t.permission);
 }
 
 /** True once at least one testimonial carries a recorded permission, ie. is real. */

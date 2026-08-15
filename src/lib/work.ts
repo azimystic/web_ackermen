@@ -1,4 +1,5 @@
 import type { Locale } from "./i18n/config";
+import { showPlaceholders } from "./placeholders";
 
 /**
  * Case studies.
@@ -188,6 +189,12 @@ export const WORK: CaseStudy[] = [
   },
 ];
 
+/**
+ * Case studies safe to show. `real: false` entries are invented demos and are
+ * hidden in production; flip an entry to `real: true` once it describes work
+ * that actually happened. See [[placeholders]].
+ */
 export function visibleWork(): CaseStudy[] {
-  return WORK;
+  if (showPlaceholders()) return WORK;
+  return WORK.filter((c) => c.real);
 }

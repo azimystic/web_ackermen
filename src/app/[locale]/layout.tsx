@@ -216,6 +216,7 @@ function jsonLd(locale: Locale) {
         "@type": "ContactPoint",
         contactType: "sales",
         email: SITE.email,
+        ...(place.telephone ? { telephone: place.telephone } : {}),
         availableLanguage: ["English", "Urdu", "Arabic"],
       },
     ],

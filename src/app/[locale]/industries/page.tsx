@@ -61,8 +61,12 @@ export default async function IndustriesPage({
         <div className="wrap">
           <h2 className="sr-only">{ind.intro.eyebrow}</h2>
           <div className="inds">
-            {ind.items.map((item) => (
-              <article className="ind reveal" key={item.name}>
+            {/* Index-based ids, not slugified names: the names are translated,
+                so a name-derived anchor would differ per locale and break the
+                nav's deep links on /ur and /ar. Item order is identical in
+                every dictionary, enforced by the Dict type. */}
+            {ind.items.map((item, i) => (
+              <article className="ind reveal" id={`ind-${i}`} key={item.name}>
                 <span className="ind__who">{item.who}</span>
                 <h3>{item.name}</h3>
                 <p className="ind__pain">{item.pain}</p>
