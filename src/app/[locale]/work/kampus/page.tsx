@@ -11,6 +11,8 @@ import {
 import { getDict } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/seo";
 import KampusMark from "../../../components/KampusMark";
+import BreadcrumbLd from "../../../components/BreadcrumbLd";
+import KampusLd from "../../../components/KampusLd";
 
 export async function generateMetadata({
   params,
@@ -49,6 +51,14 @@ export default async function KampusCasePage({
 
   return (
     <main id="main">
+      <BreadcrumbLd
+        crumbs={[
+          { name: dict.footer.home, path: href("/") },
+          { name: dict.meta.work.title, path: href("/work") },
+          { name: dict.meta.kampus.title, path: href("/work/kampus") },
+        ]}
+      />
+      <KampusLd locale={locale} />
       {/* ---- Case hero ---- */}
       <header className="pintro grid-field" style={{ paddingBottom: "clamp(3rem, 7vh, 5rem)" }}>
         <div className="wrap">

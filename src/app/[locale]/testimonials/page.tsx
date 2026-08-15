@@ -8,7 +8,7 @@ import {
 } from "@/lib/i18n/config";
 import { getDict } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/seo";
-import { visibleTestimonials } from "@/lib/testimonials";
+import { hasRealTestimonials, visibleTestimonials } from "@/lib/testimonials";
 import PageIntro from "../../components/PageIntro";
 import QuoteGrid from "../../components/QuoteGrid";
 
@@ -32,6 +32,10 @@ export async function generateMetadata({
         "x-default": absoluteUrl(localeHref("en", "/testimonials")),
       },
     },
+    // The quotes on this page are unreplaced demo content (see lib/testimonials.ts) -
+    // keep it out of Google's index so invented client praise never surfaces in search
+    // results. Drop this once at least one entry carries a recorded `permission`.
+    ...(hasRealTestimonials() ? {} : { robots: { index: false, follow: true } }),
   };
 }
 

@@ -10,6 +10,7 @@ import { getDict } from "@/lib/i18n";
 import { SITE, absoluteUrl } from "@/lib/seo";
 import PageIntro from "../../components/PageIntro";
 import ContactForm from "./ContactForm";
+import BreadcrumbLd from "../../components/BreadcrumbLd";
 
 export async function generateMetadata({
   params,
@@ -43,9 +44,16 @@ export default async function ContactPage({
   if (!isLocale(raw)) notFound();
   const locale: Locale = raw;
   const dict = getDict(locale);
+  const href = (path: string) => localeHref(locale, path);
 
   return (
     <main id="main">
+      <BreadcrumbLd
+        crumbs={[
+          { name: dict.footer.home, path: href("/") },
+          { name: dict.meta.contact.title, path: href("/contact") },
+        ]}
+      />
       <PageIntro
         eyebrow={dict.contact.intro.eyebrow}
         h={dict.contact.intro.h}

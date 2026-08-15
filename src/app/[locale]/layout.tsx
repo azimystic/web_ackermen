@@ -66,6 +66,21 @@ export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
 
+/**
+ * Social preview card. A pre-rendered static PNG rather than a generated one:
+ * the card's content is the same on every page, and the previous runtime
+ * generator (next/og) crashed outright on this project's fonts, which left
+ * every shared link with a blank preview. Regenerate with
+ * `node scripts/make-og.mjs` after changing the tagline or the mark.
+ */
+const OG_IMAGE = {
+  url: absoluteUrl("/og.png"),
+  width: 1200,
+  height: 630,
+  alt: "Ackerman, software house building ERP, CRM, POS, AI and multilingual apps",
+  type: "image/png",
+} as const;
+
 /** hreflang map shared by every page: en at /, ur and ar prefixed. */
 function languageAlternates(path: string) {
   return {
@@ -113,20 +128,13 @@ export async function generateMetadata({
       siteName: SITE.name,
       title: homeTitle,
       description: dict.meta.homeDescription,
-      images: [
-        {
-          url: "/opengraph-image",
-          width: 1200,
-          height: 630,
-          alt: homeTitle,
-          type: "image/png",
-        },
-      ],
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: homeTitle,
       description: dict.meta.homeDescription,
+      images: [OG_IMAGE.url],
     },
     robots: {
       index: true,
@@ -148,13 +156,60 @@ export async function generateMetadata({
 function jsonLd(locale: Locale) {
   const dict = getDict(locale);
   const socials = Object.values(SITE.socials).filter(Boolean);
+  const { place } = SITE;
+
+  // City-level only until a street address is confirmed. Every optional part
+  // is spread in conditionally so an unconfirmed field is simply absent
+  // rather than emitted empty, which validators read as a broken property.
+  const address = {
+    "@type": "PostalAddress",
+    ...(place.streetAddress ? { streetAddress: place.streetAddress } : {}),
+    addressLocality: place.locality,
+    addressRegion: place.region,
+    ...(place.postalCode ? { postalCode: place.postalCode } : {}),
+    addressCountry: place.country,
+  };
+
+  // Built from the same dictionary the page renders, so the markup cannot
+  // drift from the visible copy, and it stays localised for free.
+  const offerCatalog = {
+    "@type": "OfferCatalog",
+    name: dict.meta.services.title,
+    itemListElement: dict.home.services.items.map((item) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: item.title,
+        description: item.desc,
+        provider: { "@id": `${SITE.url}#organization` },
+        areaServed: SITE.organization.areaServed,
+        availableLanguage: ["English", "Urdu", "Arabic"],
+      },
+    })),
+  };
+
   const organization = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    // Multi-typed so a single node carries both the company identity and the
+    // service-business classification, rather than two nodes competing to be
+    // "Ackerman".
+    "@type": ["Organization", "ProfessionalService"],
     "@id": `${SITE.url}#organization`,
     name: SITE.organization.legalName,
+    // Ties every spelling the business is actually reached by to one entity:
+    // the brand is "Ackerman", the domain is ackermen.com. Without this they
+    // read as different companies, and neither inherits the other's signals.
+    alternateName: [...SITE.alternateNames],
     url: SITE.url,
-    logo: { "@type": "ImageObject", url: absoluteUrl("/logo.svg") },
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl("/logo.png"),
+      width: 2125,
+      height: 2125,
+    },
+    image: absoluteUrl("/logo.png"),
+    address,
+    ...(place.telephone ? { telephone: place.telephone } : {}),
     ...(socials.length ? { sameAs: socials } : {}),
     contactPoint: [
       {
@@ -164,6 +219,9 @@ function jsonLd(locale: Locale) {
         availableLanguage: ["English", "Urdu", "Arabic"],
       },
     ],
+    // The actual differentiator, stated machine-readably rather than only in
+    // prose: this agency ships in all three languages.
+    knowsLanguage: ["en", "ur", "ar"],
     ...(SITE.organization.foundingDate
       ? { foundingDate: SITE.organization.foundingDate }
       : {}),
@@ -177,7 +235,10 @@ function jsonLd(locale: Locale) {
       "Workflow automation",
       "Data analysis",
       "Multilingual applications",
+      "Right-to-left (RTL) interface development",
+      "Arabic and Urdu software localisation",
     ],
+    hasOfferCatalog: offerCatalog,
     description: dict.meta.homeDescription,
   };
 

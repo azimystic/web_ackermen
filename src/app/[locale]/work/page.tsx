@@ -13,6 +13,7 @@ import { absoluteUrl } from "@/lib/seo";
 import { visibleWork } from "@/lib/work";
 import PageIntro from "../../components/PageIntro";
 import CaseCover from "../../components/CaseCover";
+import BreadcrumbLd from "../../components/BreadcrumbLd";
 
 export async function generateMetadata({
   params,
@@ -51,6 +52,12 @@ export default async function WorkPage({
 
   return (
     <main id="main">
+      <BreadcrumbLd
+        crumbs={[
+          { name: dict.footer.home, path: href("/") },
+          { name: dict.meta.work.title, path: href("/work") },
+        ]}
+      />
       <PageIntro
         eyebrow={dict.work.intro.eyebrow}
         h={dict.work.intro.h}

@@ -10,6 +10,7 @@ import {
 import { getDict } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/seo";
 import PageIntro from "../../components/PageIntro";
+import BreadcrumbLd from "../../components/BreadcrumbLd";
 
 export async function generateMetadata({
   params,
@@ -48,6 +49,12 @@ export default async function AboutPage({
 
   return (
     <main id="main">
+      <BreadcrumbLd
+        crumbs={[
+          { name: dict.footer.home, path: href("/") },
+          { name: dict.meta.about.title, path: href("/about") },
+        ]}
+      />
       <PageIntro eyebrow={a.intro.eyebrow} h={a.intro.h} sub={a.intro.sub} />
 
       {/* ---- Principles ---- */}

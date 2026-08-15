@@ -168,3 +168,8 @@ export const TESTIMONIALS: Testimonial[] = [
 export function visibleTestimonials(): Testimonial[] {
   return TESTIMONIALS;
 }
+
+/** True once at least one testimonial carries a recorded permission, ie. is real. */
+export function hasRealTestimonials(): boolean {
+  return TESTIMONIALS.some((t) => !!t.permission);
+}

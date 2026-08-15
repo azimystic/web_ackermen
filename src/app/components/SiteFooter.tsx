@@ -37,6 +37,13 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
             <a className="footer__mail" href={`mailto:${SITE.email}`}>
               {SITE.email}
             </a>
+            {/* Visible counterpart to the PostalAddress in the Organization
+                JSON-LD. Structured data that no on-page text corroborates is
+                a weak signal, and location is the one local ranking hook this
+                site actually has. */}
+            <address className="footer__place">
+              {SITE.place.locality}, {SITE.place.countryName}
+            </address>
           </div>
 
           <nav className="footer__col" aria-label={dict.footer.sitemap}>

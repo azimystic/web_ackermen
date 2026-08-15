@@ -13,6 +13,7 @@ import PageIntro from "../../components/PageIntro";
 import AnchorRail from "../../components/AnchorRail";
 import ServiceLayer from "../../components/ServiceLayer";
 import LocaleDemo from "../../components/LocaleDemo";
+import BreadcrumbLd from "../../components/BreadcrumbLd";
 
 export async function generateMetadata({
   params,
@@ -65,6 +66,12 @@ export default async function ServicesPage({
 
   return (
     <main id="main">
+      <BreadcrumbLd
+        crumbs={[
+          { name: dict.footer.home, path: href("/") },
+          { name: dict.meta.services.title, path: href("/services") },
+        ]}
+      />
       <PageIntro eyebrow={s.intro.eyebrow} h={s.intro.h} sub={s.intro.sub} />
 
       <AnchorRail items={rail} />

@@ -1,0 +1,42 @@
+# Ackerman
+
+> Software agency based in London, UK. Builds ERP, CRM, CMS and POS systems, AI
+> chatbots, n8n workflow automation, data dashboards, and genuinely trilingual
+> (English, Urdu, Arabic, full right-to-left) web and mobile apps. The company
+> name is spelled "Ackerman"; the website is ackermen.com, and "Ackermen" refers
+> to the same company.
+
+## What Ackerman does
+
+- AI and automation: assistants that answer customer enquiries around the clock, reminders, and paperwork that files itself.
+- Web and custom software: websites, online stores, and the ERP, CRM or booking systems behind them.
+- Mobile apps: iPhone and Android apps for field staff and customers, working offline where needed.
+- Data and reporting: one dashboard consolidating sales, staff and stock figures.
+
+## What makes Ackerman different
+
+Most agencies add Urdu or Arabic at the end of a project and it shows: text runs
+the wrong way, dates break, forms feel foreign. Ackerman designs for all three
+languages from the first day, so the whole interface mirrors correctly and the
+typography uses proper Urdu and Arabic lettering.
+
+## Product
+
+- [Kampus](https://kampuscloud.app): Ackerman's own school management platform, live in production. Covers classes and timetables, student records, attendance, exams and report cards, fees and invoicing, accounts, staff and payroll, and parent messaging, across office staff, teacher, parent and student portals, in English, Urdu and Arabic.
+
+## Pages
+
+- [Home](https://ackermen.com/)
+- [Services](https://ackermen.com/services)
+- [Industries](https://ackermen.com/industries)
+- [Work](https://ackermen.com/work)
+- [Kampus case study](https://ackermen.com/work/kampus)
+- [Pricing](https://ackermen.com/pricing)
+- [About](https://ackermen.com/about)
+- [Contact](https://ackermen.com/contact)
+
+## Languages
+
+This site is published in English (https://ackermen.com/), Urdu
+(https://ackermen.com/ur) and Arabic (https://ackermen.com/ar). English is the
+default for every visitor; the language is only changed by explicit choice.

@@ -1968,6 +1968,14 @@ mark {
   border-bottom: 1px solid var(--line);
   padding-bottom: 2px;
 }
+/* <address> defaults to italic; this is a plain location line, not an aside. */
+.footer__place {
+  margin-top: 0.55rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--ink-soft, rgba(21, 23, 28, 0.66));
+}
 .footer__col h3 {
   font-family: var(--font-mono), monospace;
   font-size: 0.75rem;
