@@ -1731,9 +1731,12 @@ mark {
   padding: clamp(1.5rem, 3vw, 2.25rem) 0;
   text-decoration: none;
   color: inherit;
-  transition: padding-inline-start 0.35s var(--ease-out);
+  /* transform, not padding: animating padding relayouts the list every frame. */
+  transition: transform 0.35s var(--ease-out);
 }
-.post > a:hover { padding-inline-start: 0.75rem; }
+.post > a:hover { transform: translate3d(var(--post-nudge, 0.75rem), 0, 0); }
+/* The nudge follows the reading direction, so it still moves inward in RTL. */
+[dir="rtl"] .post > a { --post-nudge: -0.75rem; }
 .post__date {
   font-family: var(--font-mono), monospace;
   font-size: 0.75rem;
@@ -1742,7 +1745,7 @@ mark {
 }
 .post h3 {
   margin: 0.4rem 0 0.5rem;
-  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
