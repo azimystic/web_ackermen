@@ -22,15 +22,6 @@ export const OG_LOCALE: Record<Locale, string> = {
   ar: "ar_AE",
 };
 
-/** Countries where the site should default to Arabic. */
-export const ARABIC_COUNTRIES = [
-  "AE", "SA", "QA", "KW", "BH", "OM", "EG", "JO", "IQ", "LB",
-  "LY", "MA", "DZ", "TN", "SY", "YE", "SD", "PS", "MR", "SO", "DJ", "KM",
-];
-
-/** Countries where the site should default to Urdu. */
-export const URDU_COUNTRIES = ["PK"];
-
 export function isLocale(value: string | undefined | null): value is Locale {
   return !!value && (LOCALES as readonly string[]).includes(value);
 }
@@ -53,22 +44,6 @@ export function localeHref(locale: Locale, path: string): string {
   return p === "/" ? `/${locale}` : `/${locale}${p}`;
 }
 
-/** Pick the locale a visitor should get, from country + Accept-Language. */
-export function detectLocale(
-  country: string | null,
-  acceptLanguage: string | null
-): Locale {
-  if (country) {
-    const c = country.toUpperCase();
-    if (ARABIC_COUNTRIES.includes(c)) return "ar";
-    if (URDU_COUNTRIES.includes(c)) return "ur";
-  }
-  if (acceptLanguage) {
-    const langs = acceptLanguage.toLowerCase();
-    // First language wins if it is one of ours.
-    const first = langs.split(",")[0]?.trim() || "";
-    if (first.startsWith("ar")) return "ar";
-    if (first.startsWith("ur")) return "ur";
-  }
-  return DEFAULT_LOCALE;
-}
+// Note: there is deliberately no locale auto-detection here. English is the
+// default for every visitor regardless of country or browser language;
+// switching is an explicit user action. See src/proxy.ts.
